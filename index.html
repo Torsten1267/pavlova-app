@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Pavlova Bestell">
+<meta name="theme-color" content="#c4bfb6">
+<title>Pavlova Lieferanten-Bestellung</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body style="margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#f5f4f2;">
+<div id="app" style="max-width:480px;margin:0 auto;height:100vh;display:flex;flex-direction:column;background:#fff;">
+<div style="background:#c4bfb6;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+<div style="display:flex;align-items:center;gap:10px;">
+<div style="width:36px;height:36px;"><svg id="icons_filled" data-name="icons filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 226.77 226.77">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #c4bfb6;
+      }
+    </style>
+  </defs>
+  <g id="icon-filled-beige">
+    <circle id="circle" class="cls-2" cx="113.39" cy="113.39" r="85.04"/>
+    <path id="logomark" class="cls-1" d="m59.83,122.61c-.3.22-.6.46-.89.71l-.78.75-.69.79c-.34.39-.71.76-1.09,1.11-.07.07-.17.1-.26.1s-.19-.04-.27-.11c-.15-.14-.16-.37-.02-.52.33-.39.66-.81.97-1.24l.99-1.34.4-.45c.28-.3.57-.59.89-.87.32-.29.64-.57.96-.83l.52-.43c.5-.41,1.01-.82,1.5-1.27l.3-.27c.26-.23.52-.48.79-.7.21-.18.45-.35.71-.5.24-.14.48-.27.73-.36l.38-.14c.47-.13.92-.25,1.37-.37.43-.11.85-.22,1.28-.34,8.69-2.54,12.46-2.74,20.73-3.16,2.43-.2,4.67-.51,6.62-.91,2.47-.52,4.58-1.21,6.25-2.05.55-.28,1.08-.58,1.6-.88-.28.02-.58.02-.88-.02-.38-.04-.77-.13-1.02-.19l-.18-.06c-.32-.11-.59-.21-.83-.33l-.26-.14c-.23-.11-.47-.24-.69-.42-.58-.41-1.11-.91-1.55-1.5-.44-.57-.8-1.22-1.05-1.88-.22-.58-.35-1.19-.4-1.81-.05-.63-.02-1.28.09-1.92.14-.8.59-1.88,1.17-2.81.47-.74.99-1.34,1.52-1.74.62-.47,1.27-.66,1.88-.55.23.04.46.13.69.25-.16-.6-.28-1.2-.36-1.77-.08-.61-.12-1.21-.12-1.8v-.23c.06-1,.11-2.13.59-3.07,2.43-4.75,5.82-5.72,7.27-6.13l1.3-.37.93-.14c1.99-.13,5.04.2,7.71,1.55,2.17,1.09,3.72,2.68,4.49,4.59.11.27.19.56.25.84.06.3.08.59.08.88-.02,1.15-.5,2.12-.97,3.07-.56,1.13-1.09,2.19-.92,3.57.1.82.44,1.79,1,2.9.47.94,1.04,1.84,1.58,2.68.29.45.82.73,1.56.81.15.02.32.02.49.02.17-.01.34.12.38.3.04.18-.05.36-.22.43-.73.33-1.28.41-1.75.25l-.35-.21-.64-.61c-.82-.8-1.71-1.93-2.44-3.11-.71-1.16-1.23-2.28-1.48-3.24-.1-.4-.15-.81-.16-1.22,0-.43.04-.87.12-1.28.12-.6.37-1.21.61-1.79.59-1.41,1.09-2.61.17-3.94-.53-.76-1.31-1.51-2.27-2.17-.99-.68-2.16-1.27-3.28-1.65-1.36-.46-2.8-.65-4.16-.56-1.34.09-2.57.48-3.57,1.11-1.31.83-2.22,2.11-2.63,3.69-.43,1.6-.33,3.44.28,5.32.15.46,1.38,2.37,3.23,4.99.1.15.09.34-.03.48-.12.13-.32.16-.47.07-.9-.51-1.74-1.18-2.43-1.94-.85-.93-1.49-2.02-1.86-3.13-.2-.62-.3-.8-.33-.84,0,.05,0,.16.01.39.09.77.4,2.22.75,3.22.17.31.48.89.04,1.15-.38.2-1.05.06-2.12-.2-.56-.14-1.1-.26-1.46-.26h0c-.31,0-1.07.39-1.81,1.04-.64.56-1.07,1.15-1.11,1.53-.04.52-.03,1.03.05,1.53.07.49.21.95.4,1.36.44.98,1.36,1.9,2.51,2.55.66.37,1.37.61,2.05.71.71.1,1.36.03,1.89-.21.49-.22.88-.59,1.15-1.08.17-.3.26-.66.26-1.05,0-.38-.09-.78-.25-1.13-.22-.46-.57-.86-1.04-1.19-.48-.33-1.08-.59-1.78-.76-.27-.07-.55-.13-.84-.16-.29-.03-.55-.01-.8.04-.27.07-.52.2-.71.38-.11.1-.19.21-.26.34-.1.17-.31.24-.49.16-.18-.08-.27-.29-.2-.48.05-.13.11-.25.19-.38.24-.38.57-.68.97-.89,0,0,.08-.04.09-.04.2-.09.38-.17.56-.21l.68-.12c.25-.02.51-.01.78.02.26.03.53.09.79.17.61.19,1.17.46,1.69.8.51.35.97.77,1.36,1.25.54.69.87,1.52.92,2.34.05.8-.19,1.55-.66,2.11.53-.18,1.06-.3,1.59-.38.58-.09,1.18-.12,1.77-.08l.51.05c.19.02.37.04.55.07l.93.11c.49.04.94-.12,1.31-.46.37-.33.65-.86.81-1.47.05-.19.08-.39.11-.59.02-.2.16-.38.39-.34.2,0,.36.16.37.36.06.98-.09,1.88-.43,2.54-.1.18-.2.33-.31.46-.76.9-2.02.84-3.13.78-.34-.02-.67-.03-.98-.03-1.75.06-3.15.36-4.52.97-.83.37-1.69.9-2.46,1.36-.61.37-1.19.73-1.68.96l-.4.19c-1.42.68-2.64,1.26-6.88,2.24-1.84.42-3.6.72-5.25.87-1.83.17-3.63.24-5.36.3-2.67.09-5.2.18-7.75.64-3.71.66-10.05,2.3-12.35,4.06l-.31.24c-.56.42-1.12.79-1.65,1.15l-.56.38c-.34.23-.68.46-1,.7h0Zm33.25-2.92c6.66-.95,13.55-1.94,15.24-1.13,5.19,2.46,8.53,5.75,9.16,9.01.43,2.24-.38,4.49-2.41,6.69-.13.14-.14.36-.01.5.07.09.18.13.29.13.07,0,.14-.02.21-.06,1.77-1.15,2.85-2.63,3.19-4.4.41-2.09-.25-4.44-1.9-6.81-2.86-4.12-8.44-7.86-13.55-7.02l-2.87.49c-6.86,1.17-13.96,2.38-21.11,2.51-3.49.14-6.74.31-9.6.46l-2.6.13c-1.26.03-2.99.06-3.71,1.54-.12.25-.21.49-.28.72-.04.13-.09.26-.14.39-.1.25-.23.48-.37.72l-.25.41c-.39.65-.8,1.33-1.09,2.09-.33.95-.7,1.84-1.47,2.34-.17.11-.22.34-.12.51.1.17.32.24.5.15,1.05-.54,1.59-1.61,2.01-2.57.3-.63.71-1.22,1.12-1.79l.3-.43c.17-.25.35-.53.5-.85.07-.15.14-.3.2-.45.08-.18.15-.36.24-.52.44-.76,1.61-.7,2.55-.66h.18c2.44-.21,5.22-.33,8.16-.46,3.92-.17,7.98-.34,11.29-.76,2.04-.26,4.2-.57,6.35-.87h0Zm67.46-59.76c-.12-.16-.35-.2-.52-.09-1.5,1.01-3.03,1.2-4.51,1.4-2.11.27-4.11.53-5.42,3.14l-1.4,2.62-2.39,4.11c-.82,1.37-1.66,2.78-2.45,4.3l-.76,1.55-.68,1.6-1.08,3.19-1.05,2.99c-.18.47-.36.94-.56,1.41-.19.46-.39.9-.6,1.32l-.65,1.24-.71,1.14-.78,1-.86.9c-.45.42-.92.83-1.43,1.27-.36.31-.71.61-1.05.92-.34.31-.67.63-.97.96l-.63.74c-.13.16-.11.38.04.52.07.07.16.1.26.1s.19-.04.27-.11l.6-.55c.57-.5,1.21-.95,1.9-1.43l.28-.2c.49-.35,1.01-.71,1.53-1.12l1.02-.89.91-1.01.85-1.16.77-1.27c.24-.44.48-.89.71-1.36.23-.47.44-.94.65-1.43.21-.5.42-.99.61-1.48.2-.51.39-1.03.57-1.53l.83-2.32c.2-.52.39-.99.61-1.5l1.07-2.24c.6-1.15,1.24-2.29,1.87-3.39l1.31-2.33,1.46-2.81,1.3-2.77c.97-2.27,2.48-2.58,4.39-2.98,1.45-.3,3.09-.64,4.64-1.97.15-.13.18-.36.05-.52h0Zm-25.68,57.93l-.53.16c-.19.06-.31.26-.26.46,1.47,5.64,1.18,10.09-.88,13.6-3.7,6.29-12.67,8.59-21.34,10.82-6.97,1.79-13.55,3.48-17.71,7.09-6.27,5.52-11.54,15.02-9.5,22.51.07.24.26.39.49.39.05,0,.1,0,.15-.02.31-.09.57-.46.46-.85-1.88-6.89,3.34-15.71,9.2-20.51,5.49-4.46,10.98-5.68,16.78-6.98,2.92-.65,5.94-1.33,9.1-2.44,6.79-2.34,11.82-6.32,14.15-11.2,1.86-3.89,1.98-8.31.35-12.8-.07-.19-.28-.29-.47-.23h0Z"/>
+  </g>
+</svg></div>
+<div><div style="font-size:15px;font-weight:700;color:#3a3530;">Lieferanten-Bestellung</div><div style="font-size:11px;color:#6b655f;">Pavlova Cafe Berlin</div></div>
+</div>
+<button onclick="sheetOn()" style="background:rgba(255,255,255,0.4);border:none;border-radius:20px;padding:5px 12px;cursor:pointer;font-size:12px;display:flex;align-items:center;gap:5px;"><span id="uK" style="width:22px;height:22px;border-radius:50%;background:#B5D4F4;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#0C447C;">MK</span><span id="uN">Marco Koch</span></button>
+</div>
+<div id="inhalt" style="flex:1;overflow-y:auto;"></div>
+<div style="display:flex;background:#fff;border-top:1px solid rgba(0,0,0,0.1);flex-shrink:0;">
+<button id="nb-bestellen" onclick="go('bestellen')" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;border:none;background:transparent;cursor:pointer;font-size:10px;color:#666;position:relative;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>Bestellen</button>
+<button id="nb-warenkorb" onclick="go('warenkorb')" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;border:none;background:transparent;cursor:pointer;font-size:10px;color:#666;position:relative;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>Warenkorb<span id="wBadge" style="display:none;position:absolute;top:4px;right:calc(50% - 16px);background:#E24B4A;color:#fff;font-size:9px;font-weight:700;border-radius:8px;padding:1px 4px;min-width:16px;text-align:center;"></span></button>
+<button id="nb-bestellungen" onclick="go('bestellungen')" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;border:none;background:transparent;cursor:pointer;font-size:10px;color:#666;position:relative;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Bestellungen<span id="bBadge" style="display:none;position:absolute;top:4px;right:calc(50% - 16px);background:#E24B4A;color:#fff;font-size:9px;font-weight:700;border-radius:8px;padding:1px 4px;min-width:16px;text-align:center;"></span></button>
+<button id="nb-einstellungen" onclick="go('einstellungen')" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;border:none;background:transparent;cursor:pointer;font-size:10px;color:#666;position:relative;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Einstellungen</button>
+</div>
+<div id="sheet" onclick="if(event.target===this)sheetOff()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:100;align-items:flex-end;justify-content:center;">
+<div style="background:#fff;border-radius:18px 18px 0 0;width:100%;max-width:480px;padding:18px 16px 28px;">
+<div style="font-size:16px;font-weight:700;margin-bottom:14px;">Mitarbeiter wechseln</div>
+<div id="sheetM"></div>
+</div></div>
+<div id="mel" style="position:fixed;bottom:75px;left:50%;transform:translateX(-50%) translateY(14px);background:#085041;color:#fff;padding:9px 18px;border-radius:18px;font-size:13px;opacity:0;transition:all .25s;z-index:999;white-space:nowrap;pointer-events:none;"></div>
+</div>
+<script>
+const FROM="Bestellung@pavlovacafe.de",CC="Bestellung@pavlovacafe.de";
+const STD_M=[{id:"MK",name:"Marco Koch"},{id:"AL",name:"Anna Lenz"},{id:"TH",name:"Thomas Huber"}];
+let M=[...STD_M],aN=M[0];
+const SUPPLIERS = {
+  'Dieter Fuhrmann': {email:'bestellung@dieter-fuhrmann.de', cats:['Früchte','Beeren','Kräuter & Kresse','Gemüse','Milchprodukte'], products:[
+    {id:1,nr:'',name:'Rhabarber',unit:'KG',cat:'Früchte',hint:''},{id:2,nr:'',name:'Erdbeeren',unit:'KG',cat:'Beeren',hint:''},{id:3,nr:'',name:'Himbeeren',unit:'Schalen',cat:'Beeren',hint:''},{id:4,nr:'',name:'Heidelbeeren',unit:'Schalen',cat:'Beeren',hint:'Wenn möglich kleine Beeren'},{id:5,nr:'',name:'Brombeeren',unit:'Schalen',cat:'Beeren',hint:''},{id:6,nr:'',name:'Passionsfrüchte / Maracuja',unit:'KG',cat:'Früchte',hint:''},{id:7,nr:'',name:'Mango vorgereift',unit:'STK',cat:'Früchte',hint:''},{id:8,nr:'',name:'Mango fest',unit:'STK',cat:'Früchte',hint:'Bitte feste Mangos!!!'},{id:9,nr:'',name:'Cranberry',unit:'Tüten',cat:'Früchte',hint:'Frische Ware'},{id:10,nr:'',name:'Kiwi lose',unit:'STK',cat:'Früchte',hint:''},{id:11,nr:'',name:'Avocado',unit:'STK',cat:'Früchte',hint:''},{id:12,nr:'',name:'Orangen',unit:'KG',cat:'Früchte',hint:''},{id:13,nr:'',name:'Limetten',unit:'STK',cat:'Früchte',hint:''},{id:14,nr:'',name:'Zitronen',unit:'STK',cat:'Früchte',hint:''},{id:15,nr:'',name:'Granatapfel',unit:'STK',cat:'Früchte',hint:''},{id:16,nr:'',name:'Äpfel',unit:'KG',cat:'Früchte',hint:'Preiswerte Äpfel'},{id:17,nr:'',name:'Ingwer',unit:'STK',cat:'Früchte',hint:''},{id:18,nr:'',name:'Minze',unit:'Bund',cat:'Kräuter & Kresse',hint:''},{id:19,nr:'',name:'Rosmarin',unit:'Bund',cat:'Kräuter & Kresse',hint:''},{id:20,nr:'',name:'Erbsenkresse (Affilakresse)',unit:'Schalen',cat:'Kräuter & Kresse',hint:'von Koppert Cress'},{id:21,nr:'',name:'Porreesprossen',unit:'Schalen',cat:'Kräuter & Kresse',hint:''},{id:22,nr:'',name:'Schnittlauch',unit:'Bund',cat:'Kräuter & Kresse',hint:''},{id:23,nr:'',name:'Petersilie Krause',unit:'Bund',cat:'Kräuter & Kresse',hint:''},{id:24,nr:'',name:'Dill',unit:'Bund',cat:'Kräuter & Kresse',hint:''},{id:25,nr:'',name:'Basilikum',unit:'Bund',cat:'Kräuter & Kresse',hint:''},{id:26,nr:'',name:'Rucola',unit:'Bund',cat:'Kräuter & Kresse',hint:''},{id:27,nr:'',name:'Kresse',unit:'Schalen',cat:'Kräuter & Kresse',hint:''},{id:28,nr:'',name:'Lollo Rosso',unit:'Kopf',cat:'Gemüse',hint:'Bitte frische Ware'},{id:29,nr:'',name:'Lollo Bianco',unit:'Kopf',cat:'Gemüse',hint:''},{id:30,nr:'',name:'Drillinge mit Schale vorgegart',unit:'STK',cat:'Gemüse',hint:''},{id:31,nr:'',name:'Kleine Strauchtomaten',unit:'KG',cat:'Gemüse',hint:''},{id:32,nr:'',name:'Schlagsahne Frankenland 33% 1L',unit:'STK',cat:'Milchprodukte',hint:'Mindestens 33% Fett'},{id:33,nr:'',name:'Frischmilch 3,5% 1L',unit:'STK',cat:'Milchprodukte',hint:'Pasteurisiert, keine H-Milch, Tetra 1L'},{id:34,nr:'',name:'Alpro Barista Hafermilch 1L',unit:'STK',cat:'Milchprodukte',hint:''},{id:35,nr:'',name:'Alpro Barista Mandelmilch 1L',unit:'STK',cat:'Milchprodukte',hint:''},{id:36,nr:'',name:'Alpro Sojamilch 1L',unit:'STK',cat:'Milchprodukte',hint:''},{id:37,nr:'',name:'Alpro Barista Kokosmilch 1L',unit:'STK',cat:'Milchprodukte',hint:''},{id:38,nr:'',name:'Milch Laktosefrei 1L',unit:'STK',cat:'Milchprodukte',hint:''},{id:39,nr:'',name:'Eier 10er Packung',unit:'STK',cat:'Milchprodukte',hint:''},{id:40,nr:'',name:'Körniger Frischkäse ca. 200g',unit:'Becher',cat:'Milchprodukte',hint:''},{id:41,nr:'',name:'Jogurt 1 kg',unit:'Becher',cat:'Milchprodukte',hint:''},{id:42,nr:'',name:'Butter 250g',unit:'STK',cat:'Milchprodukte',hint:''},{id:43,nr:'',name:'Crème Fraîche',unit:'Becher',cat:'Milchprodukte',hint:''},
+  ]},
+  'Preuss Getränke': {email:'Bestellung@getraenke-pm.de', cats:['Wasser & Mineralwasser','Säfte & Limonaden','Bier','Sonstiges'], products:[
+    {id:201,nr:'13352',name:'Lammsbräu Edel Pils',unit:'Mw 20x0,33 (BIO)',cat:'Bier',hint:''},{id:202,nr:'28075',name:'Lammsbräu Edell Hell',unit:'Mw 10x0,33 (BIO)',cat:'Bier',hint:''},{id:203,nr:'461783',name:'Bauer R wie Rhabarber',unit:'Mw 24x0,33',cat:'Säfte & Limonaden',hint:''},{id:204,nr:'29106',name:'Now Bio Apfelschorle',unit:'Mw 10x0,50 (BIO)',cat:'Säfte & Limonaden',hint:''},{id:205,nr:'29107',name:'Now Bio Mate Granate',unit:'Mw 10x0,50',cat:'Säfte & Limonaden',hint:''},{id:206,nr:'416220',name:'Now Black Cola',unit:'Mw 10x0,33 (BIO)',cat:'Säfte & Limonaden',hint:''},{id:207,nr:'29105',name:'Now Cassis Lime',unit:'Mw 10x0,50 (BIO)',cat:'Säfte & Limonaden',hint:''},{id:208,nr:'416223',name:'Now Fresh Lemon',unit:'Mw 10x0,33 (BIO)',cat:'Säfte & Limonaden',hint:''},{id:209,nr:'1352',name:'Now Grape Fruit Mix',unit:'Mw 10x0,33 (BIO)',cat:'Säfte & Limonaden',hint:''},{id:210,nr:'3095',name:'Now Holler Blüte',unit:'Mw 10x0,33 (BIO)',cat:'Säfte & Limonaden',hint:''},{id:211,nr:'27830',name:'Now Limo Light Black Cola',unit:'10x0,33 (BIO)',cat:'Säfte & Limonaden',hint:''},{id:212,nr:'416226',name:'Now Orange Cola',unit:'Mw 10x0,33 (BIO)',cat:'Säfte & Limonaden',hint:''},{id:213,nr:'416225',name:'Now Red Berry',unit:'Mw 10x0,33 (BIO)',cat:'Säfte & Limonaden',hint:''},{id:214,nr:'416224',name:'Now Sunny Orange',unit:'Mw 10x0,33 (BIO)',cat:'Säfte & Limonaden',hint:''},{id:215,nr:'1359',name:'Thomas Henry Spicy Ginger',unit:'Mw 24x0,20',cat:'Säfte & Limonaden',hint:''},{id:216,nr:'1357',name:'Thomas Henry Tonic Water',unit:'Mw 24x0,20',cat:'Säfte & Limonaden',hint:''},{id:217,nr:'461734',name:'Bauer Cranberry Fruit Drink',unit:'Mw 6x1,00',cat:'Säfte & Limonaden',hint:''},{id:218,nr:'461789',name:'Bauer Orangensaft',unit:'Mw 6x0,98 (BIO)',cat:'Säfte & Limonaden',hint:''},{id:219,nr:'461704',name:'Bauer Orangensaft',unit:'Mw 6x1,00',cat:'Säfte & Limonaden',hint:''},{id:220,nr:'413817',name:'Adello Medium PET',unit:'Mw 12x1,00',cat:'Wasser & Mineralwasser',hint:''},{id:221,nr:'416505',name:'Adello Mineralwasser PET',unit:'Mw 12x1,00',cat:'Wasser & Mineralwasser',hint:''},{id:222,nr:'13034',name:'Adello Naturell PET',unit:'Mw 12x1,00',cat:'Wasser & Mineralwasser',hint:''},{id:223,nr:'3428',name:'BioKristall Medium',unit:'Mw 10x0,33 Gastro',cat:'Wasser & Mineralwasser',hint:''},{id:224,nr:'3429',name:'BioKristall Medium',unit:'Mw 6x0,75 (BIO)',cat:'Wasser & Mineralwasser',hint:''},{id:225,nr:'4128',name:'BioKristall Still',unit:'Mw 6x0,75 (BIO)',cat:'Wasser & Mineralwasser',hint:''},{id:226,nr:'416237',name:'BioKristall Still',unit:'Mw 10x0,33 Gastro',cat:'Wasser & Mineralwasser',hint:''},{id:227,nr:'416538',name:'BLW Medium PET',unit:'Mw 12x1,00',cat:'Wasser & Mineralwasser',hint:''},{id:228,nr:'416541',name:'BLW Naturell PET',unit:'Mw 12x1,00',cat:'Wasser & Mineralwasser',hint:''},{id:229,nr:'6112',name:'BLW Spritzig PET',unit:'Mw 12x1,00',cat:'Wasser & Mineralwasser',hint:''},{id:230,nr:'416522',name:'Bauer Glühwein Rot',unit:'Mw 6x1,00',cat:'Sonstiges',hint:''},
+  ]},
+  'Terra Naturkost': {email:'Verkauf@terra-natur.de', cats:['Backwaren'], products:[
+    {id:301,nr:'',name:'Baguette',unit:'STK',cat:'Backwaren',hint:''},{id:302,nr:'',name:'Ciabatta',unit:'STK',cat:'Backwaren',hint:''},{id:303,nr:'',name:'Brötchen',unit:'10er',cat:'Backwaren',hint:''},
+  ]},
+  'Transgourmet': {email:'Alessandro.stettnisch@transgourmet.de', cats:['Fleisch'], products:[
+    {id:401,nr:'',name:'Hähnchenfilet',unit:'KG',cat:'Fleisch',hint:''},{id:402,nr:'',name:'Rinderfilet',unit:'KG',cat:'Fleisch',hint:''},
+  ]},
+};
+let wk={},curL="Dieter Fuhrmann",curK="Alle",bestellungen=[],eL="Dieter Fuhrmann",nId=5000;
+
+function save(){try{localStorage.setItem("pv_m",JSON.stringify(M));localStorage.setItem("pv_u",aN.id);const d={};Object.keys(SUPPLIERS).forEach(k=>{d[k]={email:SUPPLIERS[k].email,cats:SUPPLIERS[k].cats,products:SUPPLIERS[k].products};});localStorage.setItem("pv_s",JSON.stringify(d));}catch(e){}}
+function load(){try{const m=localStorage.getItem("pv_m");if(m){const p=JSON.parse(m);if(p&&p.length)M=p;}const uid=localStorage.getItem("pv_u");if(uid){const f=M.find(x=>x.id===uid);if(f)aN=f;}const sd=localStorage.getItem("pv_s");if(sd){const p=JSON.parse(sd);Object.keys(p).forEach(k=>{if(SUPPLIERS[k]){SUPPLIERS[k].products=p[k].products;SUPPLIERS[k].cats=p[k].cats;if(p[k].email)SUPPLIERS[k].email=p[k].email;}else{SUPPLIERS[k]={email:p[k].email||"",cats:p[k].cats||["Allgemein"],products:p[k].products||[]};}});}}catch(e){}}
+
+function mel(t){const e=document.getElementById("mel");e.textContent=t;e.style.opacity=1;e.style.transform="translateX(-50%) translateY(0)";setTimeout(()=>{e.style.opacity=0;e.style.transform="translateX(-50%) translateY(14px)";},2600);}
+function esc(s){return s.replace(/'/g,"\'");}
+
+function go(v){
+  document.getElementById("inhalt").innerHTML=views[v]();
+  document.querySelectorAll('[id^="nb-"]').forEach(b=>{b.style.color="#666";});
+  const nb=document.getElementById("nb-"+v);if(nb)nb.style.color="#1D9E75";
+  if(v==="bestellungen")bShow();
+  if(v==="einstellungen"){eInit();const u=localStorage.getItem("pv_srv");if(u){const el=document.getElementById("srvUrl");if(el)el.value=u;}srvCheck();}
+  if(v==="warenkorb")wkShow();
+}
+
+function sheetOn(){document.getElementById("sheetM").innerHTML=M.map(m=>`<div onclick="uSet('${m.id}')" style="display:flex;align-items:center;gap:9px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.08);cursor:pointer;"><div style="width:19px;height:19px;border-radius:50%;${m.id===aN.id?"background:#1D9E75;":"border:2px solid rgba(0,0,0,0.2);"}"></div><div style="font-size:15px;${m.id===aN.id?"color:#1D9E75;font-weight:600;":""}">${m.name}</div></div>`).join("");const s=document.getElementById("sheet");s.style.display="flex";}
+function sheetOff(){document.getElementById("sheet").style.display="none";}
+function uSet(id){aN=M.find(m=>m.id===id)||M[0];document.getElementById("uK").textContent=aN.id;document.getElementById("uN").textContent=aN.name;localStorage.setItem("pv_u",aN.id);sheetOff();}
+
+function wBadge(){const c=Object.keys(wk).length;const b=document.getElementById("wBadge");if(b){b.style.display=c?"block":"none";b.textContent=c;}}
+function bBadge(){const b=document.getElementById("bBadge");if(b){b.style.display=bestellungen.length?"block":"none";b.textContent=bestellungen.length;}}
+
+// CSS helpers as inline styles
+const G="#1D9E75",GD="#0F6E56",GL="#E1F5EE",GT="#0F6E56";
+const card="background:#fff;border:1px solid rgba(0,0,0,0.1);border-radius:12px;overflow:hidden;margin-bottom:10px;";
+const row="display:flex;align-items:center;gap:9px;padding:11px 13px;border-bottom:1px solid rgba(0,0,0,0.08);";
+const inp="width:100%;padding:8px 10px;border:1px solid rgba(0,0,0,0.15);border-radius:8px;font-size:13px;background:#fff;color:#1a1a1a;box-sizing:border-box;margin-top:4px;";
+const btn=`padding:9px 15px;border-radius:8px;border:none;background:${G};color:#fff;font-size:13px;font-weight:600;cursor:pointer;`;
+const btnS="padding:9px 15px;border-radius:8px;border:1px solid rgba(0,0,0,0.2);background:#f5f4f2;color:#1a1a1a;font-size:13px;font-weight:500;cursor:pointer;";
+const tit="font-size:12px;font-weight:600;color:#666;text-transform:uppercase;letter-spacing:.5px;margin:18px 0 9px;";
+
+function views(){return{};}
+
+// BESTELLEN VIEW
+function renderBestellen(){
+  const supNames=Object.keys(SUPPLIERS);
+  let h=`<div style="padding:14px;">`;
+  h+=`<div style="${tit.replace('margin:18px 0 9px','margin:0 0 8px')}">Lieferant auswählen</div>`;
+  h+=`<div style="display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px;scrollbar-width:none;">`;
+  supNames.forEach((n,i)=>{
+    const on=n===curL;
+    h+=`<div onclick="lSet('${esc(n)}')" style="padding:6px 13px;border-radius:20px;border:1px solid ${on?G:"rgba(0,0,0,0.15)"};font-size:13px;cursor:pointer;background:${on?GL:"#fff"};color:${on?GT:"#666"};white-space:nowrap;flex-shrink:0;${on?"font-weight:600;":""}">${n}</div>`;
+  });
+  h+=`</div>`;
+  h+=`<div style="position:relative;margin-bottom:10px;"><svg style="position:absolute;left:9px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:#aaa;fill:none;stroke-width:1.5;" viewBox="0 0 16 16"><circle cx="6.5" cy="6.5" r="4.5"/><path d="m10 10 3 3"/></svg><input id="suche" oninput="prodRefresh()" placeholder="Artikel suchen..." style="${inp}padding-left:32px;"></div>`;
+  h+=`<div id="katLeiste" style="display:flex;gap:5px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px;scrollbar-width:none;"></div>`;
+  h+=`<div id="prodListe"></div>`;
+  h+=`</div>`;
+  return h;
+}
+
+function lSet(n){curL=n;curK="Alle";const el=document.getElementById("suche");if(el)el.value="";katRefresh();prodRefresh();}
+function katRefresh(){const kats=["Alle",...SUPPLIERS[curL].cats];const el=document.getElementById("katLeiste");if(!el)return;el.innerHTML=kats.map(k=>`<button onclick="kSet('${esc(k)}')" style="padding:4px 11px;font-size:12px;border-radius:15px;border:1px solid ${k===curK?"rgba(0,0,0,0.25)":"rgba(0,0,0,0.1)"};background:${k===curK?"#ebebeb":"transparent"};color:${k===curK?"#1a1a1a":"#666"};cursor:pointer;white-space:nowrap;flex-shrink:0;${k===curK?"font-weight:500;":""}">${k}</button>`).join("");}
+function kSet(k){curK=k;katRefresh();prodRefresh();}
+function prodRefresh(){
+  const el=document.getElementById("prodListe");if(!el)return;
+  const s=(document.getElementById("suche")||{value:""}).value.toLowerCase();
+  const prods=SUPPLIERS[curL].products.filter(p=>(curK==="Alle"||p.cat===curK)&&(p.name.toLowerCase().includes(s)||(p.nr&&p.nr.includes(s))));
+  const sNr=curL.indexOf("Preuss")>=0;
+  el.innerHTML=prods.length?prods.map(p=>{const q=wk[p.id]||0;return`<div style="display:flex;align-items:center;gap:9px;background:#fff;border:1px solid rgba(0,0,0,0.1);border-radius:10px;padding:10px 11px;margin-bottom:6px;"><div style="flex:1;min-width:0;"><div style="font-size:14px;font-weight:500;">${p.name}</div><div style="font-size:11px;color:#666;margin-top:1px;">${p.unit}${sNr&&p.nr?" · Nr."+p.nr:""}</div>${p.hint?`<div style="font-size:11px;color:#854F0B;margin-top:1px;">${p.hint}</div>`:""}</div><div style="display:flex;align-items:center;gap:7px;flex-shrink:0;"><button onclick="qChg(${p.id},-1)" style="width:30px;height:30px;border-radius:50%;border:1px solid rgba(0,0,0,0.2);background:#f5f4f2;font-size:19px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">−</button><span id="q${p.id}" style="font-size:14px;font-weight:700;min-width:22px;text-align:center;">${q||""}</span><button onclick="qChg(${p.id},1)" style="width:30px;height:30px;border-radius:50%;border:1px solid rgba(0,0,0,0.2);background:#f5f4f2;font-size:19px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">+</button></div></div>`;}).join(""):`<div style="padding:2rem 0;text-align:center;color:#666;">Keine Artikel gefunden</div>`;}
+function qChg(id,d){const n=Math.max(0,(wk[id]||0)+d);if(n===0)delete wk[id];else wk[id]=n;const el=document.getElementById("q"+id);if(el)el.textContent=n||"";wBadge();}
+
+// WARENKORB VIEW
+function renderWarenkorb(){
+  const keys=Object.keys(wk);const sup=SUPPLIERS[curL];
+  let h=`<div style="padding:14px;">`;
+  h+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;"><div style="${tit.replace('margin:18px 0 9px','margin:0')}">Warenkorb</div><div style="font-size:12px;color:#666;background:#f5f4f2;padding:3px 9px;border-radius:9px;">${curL}</div></div>`;
+  if(!keys.length){h+=`<div style="text-align:center;padding:3rem 0;color:#666;">Noch nichts im Warenkorb</div>`;h+=`</div>`;return h;}
+  keys.forEach(id=>{const p=sup.products.find(x=>x.id==id);if(!p)return;h+=`<div style="display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid rgba(0,0,0,0.08);"><div style="flex:1;"><div style="font-size:14px;">${p.name}</div><div style="font-size:12px;color:#666;margin-top:1px;">${wk[id]} × ${p.unit}</div></div><button onclick="wkDel(${id})" style="width:26px;height:26px;border-radius:50%;border:none;background:#f5f4f2;color:#666;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;">×</button></div>`;});
+  h+=`<div style="background:#f5f4f2;border-radius:10px;padding:11px;margin:12px 0;"><div style="display:flex;gap:5px;font-size:12px;color:#666;margin-bottom:3px;"><span style="min-width:28px;">Von:</span><span style="color:#1a1a1a;font-weight:500;">Bestellung@pavlovacafe.de</span></div><div style="display:flex;gap:5px;font-size:12px;color:#666;margin-bottom:3px;"><span style="min-width:28px;">An:</span><span style="color:#1a1a1a;font-weight:500;">${sup.email}</span></div><div style="display:flex;gap:5px;font-size:12px;color:#666;"><span style="min-width:28px;">CC:</span><span style="color:#1a1a1a;font-weight:500;">Bestellung@pavlovacafe.de</span></div></div>`;
+  h+=`<div style="background:#E1F5EE;border-radius:10px;padding:9px 11px;margin-bottom:10px;font-size:12px;color:#0F6E56;line-height:1.5;">PDF-Bestellformular wird automatisch erstellt und als Anhang versendet.</div>`;
+  h+=`<textarea id="notiz" rows="2" placeholder="Hinweis zur Bestellung..." style="width:100%;padding:9px 11px;border:1px solid rgba(0,0,0,0.15);border-radius:10px;font-size:13px;background:#fff;resize:none;box-sizing:border-box;margin-bottom:10px;font-family:inherit;"></textarea>`;
+  h+=`<button onclick="pdfShow()" style="width:100%;padding:11px;border-radius:10px;border:1px solid rgba(0,0,0,0.18);background:#f5f4f2;font-size:14px;font-weight:500;cursor:pointer;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:5px;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 1H4a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V5L9 1z"/><path d="M9 1v4h4"/></svg>PDF Vorschau speichern</button>`;
+  h+=`<button onclick="bestellen()" style="width:100%;padding:13px;border-radius:12px;border:none;background:#1D9E75;color:#fff;font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="1.5"><path d="M14 2L1 7l5 2m8-7l-6 11-2-4m8-7L6 9"/></svg>Bestellung senden</button>`;
+  h+=`</div>`;return h;
+}
+function wkShow(){document.getElementById("inhalt").innerHTML=renderWarenkorb();}
+function wkDel(id){delete wk[id];const el=document.getElementById("q"+id);if(el)el.textContent="";wBadge();wkShow();}
+
+// PDF
+function buildPDFContent(doc, o) {
+  const W=210, ml=18, mr=18, cw=W-ml-mr;
+  const beige=[196,191,182], dk=[50,50,50], mid=[120,120,120], lg=[235,233,230], grn=[29,158,117], amr=[180,120,30];
+  doc.setFillColor(...beige); doc.rect(0,0,W,36,'F');
+  doc.setFont('helvetica','bold'); doc.setFontSize(15); doc.setTextColor(...dk);
+  doc.text('Pavlova Cafe Berlin', ml+6, 16);
+  doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(...mid);
+  doc.text('Kurfuerstendamm 210  |  10719 Berlin  |  Tel: 030 85621805', ml+6, 22);
+  doc.text('Bestellung@pavlovacafe.de', ml+6, 27);
+  doc.setFillColor(255,255,255); doc.rect(0,36,W,14,'F');
+  doc.setFont('helvetica','bold'); doc.setFontSize(12); doc.setTextColor(...dk);
+  doc.text('BESTELLUNG  ' + o.id, ml, 47);
+  doc.setDrawColor(...beige); doc.setLineWidth(0.5); doc.line(ml,51,W-mr,51);
+  let y=60;
+  const cols=[ml,ml+52,ml+104,ml+155];
+  const labels=['LIEFERANT','BESTELLDATUM','ANLIEFERUNG','BESTELLER'];
+  const vals=[o.supplier,o.date,o.delivDate||o.date,o.user];
+  labels.forEach((l,i)=>{ doc.setFont('helvetica','normal'); doc.setFontSize(7.5); doc.setTextColor(...mid); doc.text(l,cols[i],y); doc.setFont('helvetica','bold'); doc.setFontSize(9.5); doc.setTextColor(...dk); doc.text((vals[i]||'').substring(0,22),cols[i],y+5); });
+  const sup=SUPPLIERS[o.supplier];
+  if(sup){ doc.setFont('helvetica','normal'); doc.setFontSize(7.5); doc.setTextColor(...mid); doc.text(sup.email.substring(0,30),cols[0],y+10); }
+  y=82;
+  doc.setFillColor(...beige); doc.roundedRect(ml,y-5,cw,8,1,1,'F');
+  doc.setFont('helvetica','bold'); doc.setFontSize(8); doc.setTextColor(...dk);
+  doc.text('POS',ml+3,y); doc.text('ARTIKEL',ml+15,y);
+  doc.text('EINHEIT',ml+cw-52,y); doc.text('MENGE',ml+cw-20,y);
+  y+=8;
+  const showNr=o.supplier.indexOf('Preuss')>=0||o.supplier.indexOf('Getraenke')>=0;
+  let pos=1, lastCat='';
+  o.items.forEach(item=>{
+    if(y>268){doc.addPage();y=20;}
+    if(item.cat&&item.cat!==lastCat){lastCat=item.cat;doc.setFillColor(...lg);doc.rect(ml,y-3.5,cw,6.5,'F');doc.setFont('helvetica','bold');doc.setFontSize(7);doc.setTextColor(...mid);doc.text(item.cat.toUpperCase(),ml+3,y+1);y+=9;}
+    if(y>268){doc.addPage();y=20;}
+    if(pos%2===0){doc.setFillColor(250,249,247);doc.rect(ml,y-4,cw,7.5,'F');}
+    doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(...dk);
+    doc.text(String(pos),ml+3,y);
+    let nm=item.name;if(showNr&&item.nr)nm+=' (Nr.'+item.nr+')';if(nm.length>52)nm=nm.substring(0,52)+'...';
+    doc.text(nm,ml+15,y);
+    let ut=item.unit;if(ut.length>18)ut=ut.substring(0,18);doc.text(ut,ml+cw-52,y);
+    doc.setDrawColor(...beige);doc.setLineWidth(0.3);doc.roundedRect(ml+cw-25,y-4,18,7,1,1,'S');
+    doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(...grn);
+    doc.text(String(item.qty),ml+cw-16,y,{align:'center'});
+    if(item.hint){y+=5;doc.setFont('helvetica','italic');doc.setFontSize(7);doc.setTextColor(...amr);doc.text('  Hinweis: '+item.hint.substring(0,60),ml+15,y);}
+    pos++;y+=8;
+  });
+  if(o.note&&y<270){y+=4;doc.setFillColor(255,252,235);doc.roundedRect(ml,y-4,cw,11,1.5,1.5,'F');doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(...amr);doc.text('HINWEIS:',ml+4,y+1);doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(...dk);doc.text(doc.splitTextToSize(o.note,cw-36),ml+28,y+1);}
+  doc.setFillColor(...beige);doc.rect(0,279,W,18,'F');
+  doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(...dk);
+  doc.text('Pavlova Cafe Berlin  |  Kurfuerstendamm 210, 10719 Berlin  |  Bestellung@pavlovacafe.de',W/2,285,{align:'center'});
+  doc.setTextColor(...mid);
+  doc.text('Bestellung '+o.id+' vom '+o.date+' um '+o.time+'  |  Besteller: '+o.user,W/2,291,{align:'center'});
+}
+
+function generatePDF(o, doDownload) {
+  const {jsPDF}=window.jspdf;
+  const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  buildPDFContent(doc,o);
+  const fname='Bestellung_'+o.id+'_'+o.supplier.replace(/\s+/g,'_')+'_'+o.date.replace(/\./g,'-')+'.pdf';
+  if(doDownload) doc.save(fname);
+  return fname;
+}
+
+function pdfShow(){const keys=Object.keys(wk);if(!keys.length){mel("Warenkorb ist leer");return;}const sup=SUPPLIERS[curL],items=keys.map(id=>{const p=sup.products.find(x=>x.id==id);return{name:p.name,qty:wk[id],unit:p.unit,nr:p.nr||"",cat:p.cat,hint:p.hint||""};});const dd=new Date();dd.setDate(dd.getDate()+1);const o={id:"Vorschau",supplier:curL,email:sup.email,user:aN.name,date:new Date().toLocaleDateString("de-DE"),time:"",delivDate:dd.toLocaleDateString("de-DE"),items,note:(document.getElementById("notiz")||{value:""}).value};const {jsPDF}=window.jspdf;const doc=new jsPDF({orientation:"portrait",unit:"mm",format:"a4"});buildPDFContent(doc,o);doc.save("Bestellung_Vorschau.pdf");mel("PDF wird gespeichert...");}
+function getPdfB64(o){const {jsPDF}=window.jspdf;const doc=new jsPDF({orientation:"portrait",unit:"mm",format:"a4"});buildPDFContent(doc,o);return doc.output("datauristring").split(",")[1];}
+
+async function bestellen(){
+  const keys=Object.keys(wk);if(!keys.length)return;
+  const sup=SUPPLIERS[curL],items=keys.map(id=>{const p=sup.products.find(x=>x.id==id);return{name:p.name,qty:wk[id],unit:p.unit,nr:p.nr||"",cat:p.cat,hint:p.hint||""};});
+  const dd=new Date();dd.setDate(dd.getDate()+1);
+  const o={id:"B-"+(bestellungen.length+101),supplier:curL,email:sup.email,user:aN.name,date:new Date().toLocaleDateString("de-DE"),time:new Date().toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"}),delivDate:dd.toLocaleDateString("de-DE"),items,note:(document.getElementById("notiz")||{value:""}).value,status:"offen"};
+  const b64=getPdfB64(o);
+  const fn="Bestellung_"+o.id+"_"+o.supplier.replace(/\s+/g,"_")+"_"+o.date.replace(/\./g,"-")+".pdf";
+  const subj="Bestellung "+o.id+" \u2013 Pavlova Cafe Berlin \u2013 "+o.date;
+  const body="Guten Tag,\n\nanbei unsere Bestellung "+o.id+" vom "+o.date+" (PDF im Anhang).\n\nAnlieferung: "+o.delivDate+"\nBesteller: "+o.user+(o.note?"\nHinweis: "+o.note:"")+"\n\nMit freundlichen Gr\u00fc\u00dfen\nPavlova Cafe Berlin\nKurf\u00fcrstendamm 210, 10719 Berlin\nTel: 030 85621805";
+  bestellungen.unshift(o);wk={};
+  if(document.getElementById("notiz"))document.getElementById("notiz").value="";
+  wBadge();bBadge();
+  const ok=await apiSend(o,b64,fn,subj,body,sup.email);
+  if(!ok){const {jsPDF}=window.jspdf;const doc=new jsPDF({orientation:"portrait",unit:"mm",format:"a4"});buildPDFContent(doc,o);doc.save(fn);const ml2="mailto:"+sup.email+"?cc="+encodeURIComponent(CC)+"&subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(body);setTimeout(()=>{window.location.href=ml2;},600);mel("PDF gespeichert \u2013 E-Mail \u00f6ffnet sich");}
+  setTimeout(()=>go("bestellungen"),900);
+}
+async function apiSend(o,b64,fn,subj,body,to){const url=(localStorage.getItem("pv_srv")||"").replace(/\/+$/,"");if(!url)return false;try{mel("Bestellung wird gesendet\u2026");const r=await fetch(url+"/api/send-order",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({to,cc:CC,subject:subj,body,pdfBase64:b64,pdfFilename:fn,orderId:o.id}),signal:AbortSignal.timeout(15000)});const d=await r.json();if(d.ok){mel("\u2705 "+o.id+" gesendet!");return true;}mel("\u26a0\ufe0f "+d.error);return false;}catch(e){mel("\u26a0\ufe0f Kein Server \u2013 Fallback");return false;}}
+
+// BESTELLUNGEN VIEW
+function renderBestellungen(){
+  let h=`<div style="padding:14px;">`;
+  if(!bestellungen.length){h+=`<div style="text-align:center;padding:3rem 0;color:#666;">Noch keine Bestellungen</div>`;h+=`</div>`;return h;}
+  bestellungen.forEach(b=>{
+    const f=b.status==="offen"?"#EF9F27":b.status==="bestaetigt"?"#1D9E75":"#888780";
+    const t=b.status==="offen"?"Offen":b.status==="bestaetigt"?"Best\u00e4tigt":"Geliefert";
+    const bg=b.status==="offen"?"#FAEEDA":b.status==="bestaetigt"?"#E1F5EE":"#f5f4f2";
+    const tc=b.status==="offen"?"#854F0B":b.status==="bestaetigt"?"#0F6E56":"#666";
+    const sup=SUPPLIERS[b.supplier];const ml2="mailto:"+(sup?sup.email:"")+"?cc="+encodeURIComponent(CC)+"&subject="+encodeURIComponent("Bestellung "+b.id);
+    h+=`<div style="background:#fff;border:1px solid rgba(0,0,0,0.1);border-radius:12px;padding:13px;margin-bottom:9px;">`;
+    h+=`<div style="display:flex;align-items:center;gap:7px;margin-bottom:5px;flex-wrap:wrap;"><div style="width:8px;height:8px;border-radius:50%;background:${f};flex-shrink:0;"></div><span style="font-size:13px;font-weight:600;">${b.id}</span><span style="font-size:11px;padding:2px 7px;border-radius:7px;background:#f5f4f2;color:#666;">${b.supplier}</span><button onclick="bStatus('${b.id}')" style="font-size:11px;padding:2px 7px;border-radius:7px;background:${bg};color:${tc};border:none;cursor:pointer;">${t}</button></div>`;
+    h+=`<div style="font-size:12px;color:#666;margin-bottom:7px;">${b.date} ${b.time} · ${b.user} · ${b.items.length} Artikel${b.note?" · \""+b.note.substring(0,20)+"\"":""}</div>`;
+    h+=`<div style="display:flex;gap:7px;"><button onclick="bPdf('${b.id}')" style="font-size:12px;padding:5px 11px;border-radius:8px;border:1px solid rgba(0,0,0,0.18);background:transparent;color:#666;cursor:pointer;">PDF herunterladen</button><button onclick="window.location.href='${ml2.replace(/'/g,"\\'")}'" style="font-size:12px;padding:5px 11px;border-radius:8px;border:1px solid rgba(0,0,0,0.18);background:transparent;color:#666;cursor:pointer;">E-Mail senden</button></div>`;
+    h+=`</div>`;
+  });
+  h+=`</div>`;return h;
+}
+function bShow(){document.getElementById("inhalt").innerHTML=renderBestellungen();}
+function bStatus(id){const b=bestellungen.find(x=>x.id===id);if(!b)return;const f=["offen","bestaetigt","geliefert"];b.status=f[(f.indexOf(b.status)+1)%3];bShow();}
+function bPdf(id){const b=bestellungen.find(x=>x.id===id);if(!b)return;const {jsPDF}=window.jspdf;const doc=new jsPDF({orientation:"portrait",unit:"mm",format:"a4"});buildPDFContent(doc,b);doc.save("Bestellung_"+b.id+".pdf");mel("PDF gespeichert");}
+
+// EINSTELLUNGEN VIEW
+function renderEinstellungen(){
+  let h=`<div style="padding:14px;">`;
+  
+  // Server & Email
+  h+=`<div style="${tit.replace('margin:18px 0 9px','margin:0 0 9px')}">Server & E-Mail</div>`;
+  h+=`<div style="${card}"><div style="${row}last-child:border:none;"><div style="flex:1;"><div style="font-size:14px;">Server-Verbindung</div><div id="srvTxt" style="font-size:12px;color:#666;margin-top:1px;">Nicht verbunden</div></div><div id="srvDot" style="width:9px;height:9px;border-radius:50%;background:#E24B4A;flex-shrink:0;"></div></div></div>`;
+  h+=`<div style="background:#fff;border:1px solid rgba(0,0,0,0.1);border-radius:12px;padding:13px;margin-bottom:9px;"><div style="font-size:12px;color:#666;font-weight:500;margin-bottom:5px;">Server-URL (Render.com)</div><input id="srvUrl" placeholder="https://pavlova-server.onrender.com" style="${inp}"><div style="display:flex;gap:7px;margin-top:9px;"><button onclick="srvSave()" style="${btn}flex:1;">Speichern</button><button onclick="srvTest()" style="${btnS}flex:1;">Testen</button></div></div>`;
+  
+  h+=`<div style="${tit}">SMTP-Einstellungen</div>`;
+  h+=`<div style="background:#fff;border:1px solid rgba(0,0,0,0.1);border-radius:12px;padding:13px;margin-bottom:9px;">`;
+  h+=`<div style="margin-bottom:11px;"><div style="font-size:12px;color:#666;font-weight:500;margin-bottom:4px;">SMTP-Host</div><input id="sHost" placeholder="mail.pavlovacafe.de" style="${inp}"></div>`;
+  h+=`<div style="margin-bottom:11px;"><div style="font-size:12px;color:#666;font-weight:500;margin-bottom:4px;">Port</div><input id="sPort" type="number" placeholder="587" style="${inp}"></div>`;
+  h+=`<div style="margin-bottom:11px;"><div style="font-size:12px;color:#666;font-weight:500;margin-bottom:4px;">Benutzername</div><input id="sUser" placeholder="Bestellung@pavlovacafe.de" style="${inp}"></div>`;
+  h+=`<div style="margin-bottom:11px;"><div style="font-size:12px;color:#666;font-weight:500;margin-bottom:4px;">Passwort</div><input id="sPass" type="password" placeholder="E-Mail Passwort" style="${inp}"></div>`;
+  h+=`<div style="display:flex;gap:7px;"><button onclick="smtpSave()" style="${btn}flex:1;">Speichern</button><button onclick="smtpTest()" style="${btnS}flex:1;">SMTP testen</button></div>`;
+  h+=`</div>`;
+  
+  h+=`<div style="background:#fff;border:1px solid rgba(0,0,0,0.1);border-radius:12px;padding:13px;margin-bottom:9px;">`;
+  h+=`<div style="margin-bottom:11px;"><div style="font-size:12px;color:#666;font-weight:500;margin-bottom:4px;">Absender – fest hinterlegt</div><input value="Bestellung@pavlovacafe.de" readonly style="${inp}background:#f5f4f2;color:#666;"></div>`;
+  h+=`<div><div style="font-size:12px;color:#666;font-weight:500;margin-bottom:4px;">CC – automatisch bei jeder Bestellung</div><input value="Bestellung@pavlovacafe.de" readonly style="${inp}background:#f5f4f2;color:#666;"></div>`;
+  h+=`</div>`;
+
+  // Lieferanten
+  h+=`<div style="${tit}">Lieferanten verwalten</div>`;
+  h+=`<div style="${card}">`;
+  Object.entries(SUPPLIERS).forEach(([n,s])=>{h+=`<div style="${row}"><div style="flex:1;"><div style="font-size:14px;">${n}</div><div style="font-size:12px;color:#666;margin-top:1px;">${s.email}</div></div><button onclick="lDel('${esc(n)}')" style="width:26px;height:26px;border-radius:50%;border:1px solid rgba(0,0,0,0.1);background:#f5f4f2;color:#666;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;">×</button></div>`;});
+  h+=`</div>`;
+  h+=`<div style="${card}"><div style="padding:11px 13px;background:#f5f4f2;display:flex;flex-direction:column;gap:7px;"><input id="nLName" placeholder="Lieferantenname *" style="${inp}margin-top:0;"><input id="nLEmail" placeholder="E-Mail Adresse *" type="email" style="${inp}margin-top:0;"><input id="nLKat" placeholder="Erste Kategorie (z.B. Fleisch)" style="${inp}margin-top:0;"><button onclick="lAdd()" style="${btn}">+ Lieferant anlegen</button></div></div>`;
+
+  // Mitarbeiter
+  h+=`<div style="display:flex;align-items:center;justify-content:space-between;margin:18px 0 9px;"><div style="${tit.replace('margin:18px 0 9px','margin:0')}">Mitarbeiter</div><button onclick="mReset()" style="font-size:11px;padding:3px 9px;border-radius:8px;border:1px solid rgba(0,0,0,0.2);background:transparent;color:#666;cursor:pointer;">Zurücksetzen</button></div>`;
+  h+=`<div style="${card}">`;
+  M.forEach(m=>{h+=`<div style="${row}"><div style="width:28px;height:28px;border-radius:50%;background:#B5D4F4;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#0C447C;flex-shrink:0;">${m.id}</div><div style="flex:1;font-size:14px;">${m.name}</div>${M.length>1?`<button onclick="mDel('${m.id}')" style="width:26px;height:26px;border-radius:50%;border:1px solid rgba(0,0,0,0.1);background:#f5f4f2;color:#666;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;">×</button>`:""}`;h+=`</div>`;});
+  h+=`</div>`;
+  h+=`<div style="${card}"><div style="padding:11px 13px;background:#f5f4f2;display:flex;flex-direction:column;gap:7px;"><div style="display:flex;gap:7px;"><input id="nMName" placeholder="Name" style="${inp}margin-top:0;flex:1;"><input id="nMK" placeholder="Kürzel" style="${inp}margin-top:0;max-width:70px;"></div><button onclick="mAdd()" style="${btn}">+ Mitarbeiter hinzufügen</button></div></div>`;
+
+  // Produkte
+  h+=`<div style="${tit}">Produkte verwalten</div>`;
+  h+=`<div style="display:flex;gap:5px;overflow-x:auto;padding-bottom:5px;margin-bottom:9px;scrollbar-width:none;">`;
+  Object.keys(SUPPLIERS).forEach(n=>{h+=`<button onclick="eLSet('${esc(n)}')" style="padding:4px 11px;font-size:12px;border-radius:15px;border:1px solid ${n===eL?"#1D9E75":"rgba(0,0,0,0.1)"};background:${n===eL?"#E1F5EE":"transparent"};color:${n===eL?"#0F6E56":"#666"};cursor:pointer;white-space:nowrap;flex-shrink:0;${n===eL?"font-weight:600;":""}">${n}</button>`;});
+  h+=`</div>`;
+  h+=`<div id="eProdListe" style="${card}"></div>`;
+  h+=`<div style="${card}"><div style="padding:11px 13px;background:#f5f4f2;display:flex;flex-direction:column;gap:7px;"><input id="nPName" placeholder="Artikelname *" style="${inp}margin-top:0;"><div style="display:flex;gap:7px;"><input id="nPEinheit" placeholder="Einheit *" style="${inp}margin-top:0;max-width:90px;"><input id="nPKat" placeholder="Kategorie" style="${inp}margin-top:0;"><input id="nPNr" placeholder="Art.-Nr." style="${inp}margin-top:0;max-width:75px;"></div><input id="nPHinweis" placeholder="Hinweis (optional)" style="${inp}margin-top:0;"><button onclick="pAdd()" style="${btn}">+ Artikel hinzufügen</button></div></div>`;
+  
+  h+=`</div>`;return h;
+}
+
+function eInit(){document.getElementById("inhalt").innerHTML=renderEinstellungen();eProdRefresh();const u=localStorage.getItem("pv_srv");if(u&&document.getElementById("srvUrl"))document.getElementById("srvUrl").value=u;srvCheck();}
+function eLSet(n){eL=n;eInit();}
+function eProdRefresh(){const el=document.getElementById("eProdListe");if(!el)return;const sup=SUPPLIERS[eL];el.innerHTML=sup.products.map(p=>`<div style="${row}"><div style="flex:1;"><div style="font-size:14px;">${p.name}</div><div style="font-size:12px;color:#666;margin-top:1px;">${p.unit} · ${p.cat}${p.nr?" · Nr."+p.nr:""}${p.hint?" · "+p.hint:""}</div></div><button onclick="pDel(${p.id})" style="width:26px;height:26px;border-radius:50%;border:1px solid rgba(0,0,0,0.1);background:#f5f4f2;color:#666;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;">×</button></div>`).join("")||`<div style="${row}"><div style="color:#666;font-size:13px;">Noch keine Artikel</div></div>`;}
+function pAdd(){const n=(document.getElementById("nPName")||{value:""}).value.trim(),u=(document.getElementById("nPEinheit")||{value:""}).value.trim(),k=(document.getElementById("nPKat")||{value:""}).value.trim(),nr=(document.getElementById("nPNr")||{value:""}).value.trim(),h2=(document.getElementById("nPHinweis")||{value:""}).value.trim();if(!n||!u){mel("Name und Einheit sind Pflicht");return;}const sup=SUPPLIERS[eL],id=++nId;sup.products.push({id,nr,name:n,unit:u,cat:k||sup.cats[0]||"Allgemein",hint:h2});if(k&&!sup.cats.includes(k))sup.cats.push(k);save();eInit();}
+function pDel(id){SUPPLIERS[eL].products=SUPPLIERS[eL].products.filter(p=>p.id!==id);delete wk[id];wBadge();save();eProdRefresh();}
+function lAdd(){const n=(document.getElementById("nLName")||{value:""}).value.trim(),e=(document.getElementById("nLEmail")||{value:""}).value.trim(),k=(document.getElementById("nLKat")||{value:""}).value.trim()||"Allgemein";if(!n||!e){mel("Name und E-Mail sind Pflicht");return;}if(SUPPLIERS[n]){mel("Lieferant existiert bereits");return;}SUPPLIERS[n]={email:e,cats:[k],products:[]};save();eInit();}
+function lDel(n){if(!confirm(n+" löschen?"))return;delete SUPPLIERS[n];if(curL===n)curL=Object.keys(SUPPLIERS)[0];if(eL===n)eL=Object.keys(SUPPLIERS)[0];save();eInit();go("bestellen");setTimeout(()=>go("einstellungen"),100);}
+function mAdd(){const n=(document.getElementById("nMName")||{value:""}).value.trim();let k=(document.getElementById("nMK")||{value:""}).value.trim().toUpperCase();if(!n)return;if(!k)k=n.split(" ").map(w=>w[0]).join("").substring(0,2).toUpperCase();if(M.find(m=>m.id===k))k=k+(M.length+1);M.push({id:k,name:n});save();eInit();}
+function mDel(id){if(aN.id===id){mel("Aktiven Nutzer nicht löschbar");return;}M=M.filter(m=>m.id!==id);save();eInit();}
+function mReset(){if(!confirm("Zurücksetzen?"))return;M=[...STD_M];aN=M[0];document.getElementById("uK").textContent=aN.id;document.getElementById("uN").textContent=aN.name;save();eInit();}
+
+function srvSave(){const u=(document.getElementById("srvUrl")||{value:""}).value.trim().replace(/\/+$/,"");if(!u){mel("Bitte URL eingeben");return;}localStorage.setItem("pv_srv",u);mel("Server-URL gespeichert");srvCheck();}
+async function srvTest(){const u=((document.getElementById("srvUrl")||{value:""}).value.trim()||localStorage.getItem("pv_srv")||"").replace(/\/+$/,"");if(!u){mel("Bitte URL eintragen");return;}mel("Verbindung wird getestet\u2026");try{const r=await fetch(u+"/api/status",{signal:AbortSignal.timeout(8000)});const d=await r.json();srvSet(d.ok,d.ok?"Verbunden \u2013 SMTP: "+(d.smtp&&d.smtp.configured?d.smtp.host:"nicht konfiguriert"):"Fehler");mel(d.ok?"\u2705 Server erreichbar!":"\u26a0\ufe0f "+d.error);}catch(e){srvSet(false,"Nicht erreichbar");mel("\u26a0\ufe0f Nicht erreichbar");}}
+async function srvCheck(){const u=(localStorage.getItem("pv_srv")||"").replace(/\/+$/,"");if(!u)return;try{const r=await fetch(u+"/api/status",{signal:AbortSignal.timeout(5000)});const d=await r.json();srvSet(d.ok,d.ok?"Verbunden \u2013 "+(d.smtp&&d.smtp.configured?d.smtp.host+":"+d.smtp.port:"SMTP nicht konfiguriert"):"Fehler");}catch(e){srvSet(false,"Nicht erreichbar");}}
+function srvSet(ok,t){const d=document.getElementById("srvDot"),tx=document.getElementById("srvTxt");if(d)d.style.background=ok?"#1D9E75":"#E24B4A";if(tx)tx.textContent=t;}
+async function smtpSave(){const url=(localStorage.getItem("pv_srv")||"").replace(/\/+$/,"");if(!url){mel("Zuerst Server-URL speichern");return;}const cfg={host:(document.getElementById("sHost")||{value:""}).value.trim(),port:(document.getElementById("sPort")||{value:""}).value.trim(),user:(document.getElementById("sUser")||{value:""}).value.trim(),pass:(document.getElementById("sPass")||{value:""}).value.trim()};if(!cfg.host||!cfg.port||!cfg.user||!cfg.pass){mel("Alle SMTP-Felder ausfüllen");return;}try{const r=await fetch(url+"/api/smtp-config",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(cfg),signal:AbortSignal.timeout(8000)});const d=await r.json();mel(d.ok?"\u2705 SMTP gespeichert!":"\u26a0\ufe0f "+d.error);if(d.ok&&document.getElementById("sPass"))document.getElementById("sPass").value="";}catch(e){mel("\u26a0\ufe0f Server nicht erreichbar");}}
+async function smtpTest(){const url=(localStorage.getItem("pv_srv")||"").replace(/\/+$/,"");if(!url){mel("Zuerst Server-URL speichern");return;}mel("SMTP wird getestet\u2026");try{const r=await fetch(url+"/api/smtp-test",{signal:AbortSignal.timeout(15000)});const d=await r.json();mel(d.ok?"\u2705 SMTP Verbindung erfolgreich!":"\u26a0\ufe0f "+d.error);}catch(e){mel("\u26a0\ufe0f Server nicht erreichbar");}}
+
+// Start
+load();
+go("bestellen");
+document.getElementById("uK").textContent=aN.id;
+document.getElementById("uN").textContent=aN.name;
+</script>
+</body>
+</html>
